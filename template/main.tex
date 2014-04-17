@@ -1,0 +1,46 @@
+%%
+% Template for using the IEEEtran documentclass
+% Uses onecolumn journal style with 10 pt font
+%%
+\documentclass[journal,onecolumn,twoside,10pt]{IEEEtran}
+
+%% Include any other packages you want here.
+\usepackage{lipsum} % Generate dummy text.
+\usepackage{graphicx} % Enable graphics
+
+% "Double" spacing
+\linespread{1.6}
+
+% paper title
+% can use linebreaks \\ within to get better formatting as desired
+\title{Sample Document for CprE 308}
+
+% Author Name
+\author{Your~Name} 
+
+%% Header info.  First part for page one and even, second for odd after first.
+\markboth{CPRE 308 FINAL PROJECT, SPRING 2014}
+{LAST~NAME: TITLE}
+
+% Begin document
+\begin{document}
+
+% Include title information
+\maketitle
+
+% Use the input command to include other files (notice we don't need the extension)
+% Feel free to add as many files as necessary.
+\input{abstract}
+\input{intro}
+\input{background}
+\input{topic}
+\input{conclusion}
+
+%% Include the bibliogrhy, using the IEEEtran style.
+\bibliographystyle{IEEEtran}
+\bibliography{reference} % Use bib information from reference.bib
+
+% that's all folks
+\end{document}
+
+
