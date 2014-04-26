@@ -7,7 +7,7 @@ The basis for the security effectiveness of ASLR depends upon the chance of an a
 
 When implemented perfectly, ASLR is a sound defense. Unfortunately if the implementation or some supporting code has a vulnerability or bug, ASLR can be bypassed. As previously stated, brute force may be possible if the conditions are correct, however this relies on a relatively small address space. The goal to getting past ASLR would be to exploit a bug in which the code leaks the starting memory address of a randomized memory segment. One common way that the address of a pointer is leaked is through a format-string attack. \cite{bhatkar2003address} An attacker uses the printf function or one of its variants where a input string is placed directly in the format-string parameter. The attacker can then use the \%n or \%d identifiers to output a random address on the stack. Using this, the attacker can sometimes find out the location of the stack or heap and use a more traditional exploit such as a buffer overflow.
 
-\begin{lstlisting}[caption=Figure 3. A dangerous printf statement]
+\begin{lstlisting}[caption=A dangerous printf statement]
 printf(message);
 \end{lstlisting}
 
