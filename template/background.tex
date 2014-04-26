@@ -3,32 +3,32 @@
 
 To understand why address space layout randomization is important, it is necessary to make sense of the kinds of attacks it helps mitigate. Buffer overflow attacks are the main class of attacks that ASLR tries to prevent. A buffer overflow happens when the data being entered into a buffer is larger than the allocated buffer space. The data typically then is placed in the adjacent memory locations to the buffer. It is usually unknown what is in those overwritten memory locations. An example of this bug can be seen in Fig. 1. In this example, a string of length eight is placed into a buffer of length six. Since the input data is longer than the buffer, the extra data is overflowed into the following memory locations. In this instance, the following memory locations make up another variable.
 
-\begin{lstlisting}
+\begin{lstlisting}[caption=Code before Figure 1a.]
 char buffer[6] = { };
 unsigned short other = 0x07BB;
 \end{lstlisting}
 
-\begin{table}
+\begin{table}[h]
 \centering % Make it center
-\begin{tabular}{l|cc} % Second argument is column list, one character per.  Justify with lcr.  Pipe for horizontal line
-var & buffer[0] & buffer[1] & buffer[2] & buffer[3] & buffer[4] & buffer[5] & other[0] & other[1] \\ % Separate columns with &, end line with \\
-\hline % Horizontal line
-hex & 00 & 00 & 00 & 00 & 00 & 00 & 07 & BB \\
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|}
+\hline
+\multicolumn{1}{|c|}{var} & buffer{[}0{]} & buffer{[}1{]} & buffer{[}2{]} & buffer{[}3{]} & buffer{[}4{]} & buffer{[}5{]} & other{[}0{]} & other{[}1{]} \\ \hline
+hex                       & 00            & 00            & 00            & 00            & 00            & 00            & 07           & BB           \\ \hline
 \end{tabular}
 \caption{Figure 1a. The buffers after initialization}
 \label{t:fig1a}
 \end{table}
 
-\begin{lstlisting}
+\begin{lstlisting}[caption=Code before Figure 1b.]
 strcpy(buffer, "8 lttrs");
 \end{lstlisting}
 
-\begin{table}
+\begin{table}[h]
 \centering % Make it center
-\begin{tabular}{l|cc} % Second argument is column list, one character per.  Justify with lcr.  Pipe for horizontal line
-var & buffer[0] & buffer[1] & buffer[2] & buffer[3] & buffer[4] & buffer[5] & other[0] & other[1] \\ % Separate columns with &, end line with \\
-\hline % Horizontal line
-hex & 38 & 20 & 6C & 74 & 74 & 72 & 73 & 00 \\
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|}
+\hline
+\multicolumn{1}{|c|}{var} & buffer{[}0{]} & buffer{[}1{]} & buffer{[}2{]} & buffer{[}3{]} & buffer{[}4{]} & buffer{[}5{]} & other{[}0{]} & other{[}1{]} \\ \hline
+hex                       & 38            & 20            & 6C            & 74            & 74            & 72            & 73           & 00           \\ \hline
 \end{tabular}
 \caption{Figure 1b. The buffers after overflow}
 \label{t:fig1b}
