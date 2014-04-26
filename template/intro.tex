@@ -1,22 +1,7 @@
 \section{Introduction}
 \label{s:intro} % This declares a label so you can reference the section elsewhere.
 
-\IEEEPARstart{T}{his} is a template intended to assist students writing their final reports.
-Notice the command at the start of this paragraph - it is optional but adds a nice effect to the report.
-If you have any questions, feel free to contact me and let me know.
-Otherwise you can simply fill in this template with your text.
-That's it for text.  Lorem Ipsum from here on.
+\IEEEPARstart{A}{ddress} space layout randomization (ASLR) is a security measure that many popular operating systems use to slow down and lessen the chances of success of buffer overflow attacks. This method randomizes key parts of a program’s address space to make it more difficult for an attacker to find an exploited function in memory. Because the memory locations are randomized, it makes it much more difficult for an attacker to guess where the areas are located.
 
-\subsection{Subsection heading}
-\lipsum[1] % Generate one paragraph of lipsum
+In this paper, I will be analyzing the background, implementation, and effectiveness of ASLR. I would like to understand the evolution of ASLR as it progressed from an experimental idea to a method implemented in all major operating systems. My goal will be to gain a strong understanding of the concepts and methods behind a modern implementation of randomizing address space layouts. Though I will mention a few common ASLR implementations, I will focus mainly on the implementation in the Linux kernel. Once I have set up a strong basis for ASLR, I will analyze how effective this method is for thwarting attackers. In addition, I will weigh the performance costs of implementing ASLR on a system when compared to a system without ASLR, or even a partial implementation.
 
-\subsection{This is another heading}
-\lipsum[2-3]
-
-\subsection{Summary}
-% To reference other labels, simply use \ref{}
-% ~ is a space, but forces the surrounding words to remain on the same line.
-The remainder of the paper is organized as follows:
-Section~\ref{s:background} will discuss background information.
-In Section~\ref{s:topic} we discuss our main topic.
-Finally, we conclude in Section~\ref{s:conclusion}
