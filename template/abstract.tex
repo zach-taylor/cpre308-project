@@ -1,4 +1,6 @@
 
 \begin{abstract}
-The abstract goes here.
+Address space layout randomization (ASLR) is a security measure that many popular operating systems use to slow down and lessen the chances of success of buffer overflow attacks. This method randomizes key parts of a program’s address space to make it more difficult for an attacker to find an exploited function in memory. Because the memory locations are randomized, it makes it much more difficult for an attacker to guess where the areas are located.
+
+In this paper, I will be analyzing the background, implementation, and effectiveness of ASLR. I would like to understand the evolution of ASLR as it progressed from an experimental idea to a method implemented in all major operating systems. My goal will be to gain a strong understanding of the concepts and methods behind a modern implementation of randomizing address space layouts. Though I will mention a few common ASLR implementations, I will focus mainly on the implementation in the Linux kernel. Once I have set up a strong basis for ASLR, I will analyze how effective this method is for thwarting attackers. In addition, I will weigh the performance costs of implementing ASLR on a system when compared to a system without ASLR, or even a partial implementation.
 \end{abstract}
