@@ -3,7 +3,7 @@
 
 To understand how address space layout randomization works in Linux, one must first know how an address space is laid out for a particular process. There are three main parts of a process’s address space: text, data, and stack \cite{memorylayout}. The text space holds the executable code of the process. This is a static, read-only block of memory. Next, there is the data segment. This section stores the program’s variables, in particular the primitives, arrays, and strings that the programmer declared. Finally, there is the stack, which is a Last-In-First-Out (LIFO) structure that contains information about the program’s execution subroutines. The text segment is traditionally at the bottom of the address space, followed by the data, with the stack located at the end of the allocated address space. The layout can be seen in Figure \ref{f:memory_layout}.
 
-\begin{figure}
+\begin{figure}[h]
 \centering % Make it center
 \includegraphics[width=0.5\textwidth]{figures/Memory-Layout.png}
 \caption{The layout of a process's memory in Linux \cite{memorylayout}}
@@ -14,7 +14,7 @@ While the predictability of the locations of these parts of the address space wo
 
 In a nonrandomized process, the location of the stack is in the same place on every execution. However, in an operating system with ASLR enabled, a process’s address space is randomized at runtime, and therefore the stack will be in a different place every time the process is created. The kernel acts as a middle-man and keeps track of where the randomized pieces are located. The source for the function in the Linux kernel that is used to randomize the addresses is shown below. It’s main purpose is to “return a start address such that a <range> with size 'len' starting at the return value is inside in the area defined by [start, end], but is otherwise randomized.” \cite{randomc} The result is that the stack is now in an unknown location, significantly reducing the effectiveness of stack buffer overflow attack.
 
-\begin{lstlisting}[caption=Source for the range randomization function]
+\begin{lstlisting}[caption=Source for the range randomization function][h]
 unsigned long randomize_range(unsigned long start, unsigned long end, unsigned long len)
 {
 	unsigned long range = end - len - start;
